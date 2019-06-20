@@ -1,10 +1,10 @@
 questions:
 - variable: nameOverride
   default: ""
-  description: "Cluster name"
   type: string
   label: Cluster Name
   required: true
+  group: Main Settings
 - variable: version
   default: "1.13.5"
   description: "Supported versions are 1.13.5, 1.14.1 and 1.14.3"
@@ -14,6 +14,7 @@ questions:
     - "1.14.1"
     - "1.14.3"
   label: Kubernetes Version
+  group: Main Settings
 - variable: cluster.replicas
   default: 3
   description: "For a production environment you must set 3 replicas"
@@ -40,3 +41,25 @@ questions:
     - 4
   label: vCPU
   group: Cluster (Kubernetes control plane with etcd)
+- variable: nodepools[0].replicas
+  default: 1
+  type: int
+  label: Number of  nodes 
+  group: Node pool 1
+- variable: nodepools[0].ram
+  default: 2
+  type: enum
+  options:
+    - 2
+    - 4
+    - 8
+  label: RAM (GB)
+  group: Node pool 1
+- variable: nodepools[0].vcpu
+  default: 2
+  type: enum
+  options:
+    - 2
+    - 4
+  label: vCPU
+  group: Node pool 1
