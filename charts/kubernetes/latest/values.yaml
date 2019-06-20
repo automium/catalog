@@ -1,7 +1,7 @@
 # nameOverride: ""
 provider: entercloudsuite
 
-# supported kubernetes versions: 1.13.5, 1.14.1 or 1.14.3
+# supported kubernetes versions: 1.13.5, 1.14.1 and 1.14.3
 version: 1.14.1
 
 # use versionOverride just for upgrading the master

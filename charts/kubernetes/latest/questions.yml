@@ -1,0 +1,11 @@
+questions:
+- variable: name
+  default: ""
+  description: "Cluster name"
+  type: string
+  label: Cluster Name
+- variable: version
+  default: ""
+  description: "Supported versions are 1.13.5, 1.14.1 and 1.14.3"
+  type: string
+  label: Kubernetes Version
