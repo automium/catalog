@@ -1,11 +1,32 @@
 questions:
-- variable: name
+- variable: nameOverride
   default: ""
   description: "Cluster name"
   type: string
   label: Cluster Name
+  required: true
 - variable: version
-  default: ""
+  default: "1.13.5"
   description: "Supported versions are 1.13.5, 1.14.1 and 1.14.3"
-  type: string
+  type: enum
+  options:
+    - "1.13.5"
+    - "1.14.1"
+    - "1.14.3"
   label: Kubernetes Version
+- variable: cluster.replicas
+  default: 3
+  description: "For a production environment you must set 3 replicas"
+  type: int
+  label: Number of  nodes 
+  group: Cluster (Kubernetes control plane with etcd)
+- variable: cluster.ram
+  default: 4
+  type: int
+  label: RAM (GB)
+  group: Cluster (Kubernetes control plane with etcd)
+- variable: cluster.vcpu
+  default: 2
+  type: int
+  label: vCPU
+  group: Cluster (Kubernetes control plane with etcd)
