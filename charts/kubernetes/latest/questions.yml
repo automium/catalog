@@ -42,7 +42,7 @@ questions:
   label: vCPU
   group: Cluster (Kubernetes control plane with etcd)
 - variable: cluster.versionOverride
-  default: 2
+  default: ""
   type: string
   label: Version
   description: "Set a specific version just for upgrading the cluster"
