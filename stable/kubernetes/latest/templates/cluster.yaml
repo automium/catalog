@@ -1,0 +1,21 @@
+apiVersion: core.automium.io/v1beta1
+kind: Service
+metadata:
+  labels:
+    app: kubernetes-cluster
+    helm.sh/chart: {{ include "kubernetes.chart" . }}
+    app.kubernetes.io/component: {{ include "kubernetes.name" . }}
+    app.kubernetes.io/part-of: {{ include "kubernetes.fullname" . }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+  name: {{ include "serviceName" . }}
+spec:
+  env: []
+  extra: []
+  replicas: {{ .Values.cluster.replicas }}
+  {{- if eq .Values.provider "entercloudsuite" }}
+  flavor: {{ include "ecsFlavor" .Values.cluster }}
+  {{- else }}
+  flavor: "not implemented"
+  {{- end }}
+  tags: []
+  version: {{ include "serviceVersion" .Values.version }}
