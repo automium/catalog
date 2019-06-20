@@ -18,4 +18,4 @@ spec:
   flavor: "not implemented"
   {{- end }}
   tags: []
-  version: {{ include "serviceVersion" .Values.version }}
+  version: {{ .Values.versionOverride | default (include "serviceVersion" .Values.version) }}

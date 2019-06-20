@@ -41,6 +41,12 @@ questions:
     - 4
   label: vCPU
   group: Cluster (Kubernetes control plane with etcd)
+- variable: cluster.versionOverride
+  default: 2
+  type: string
+  label: Version
+  description: "Set a specific version just for upgrading the cluster"
+  group: Cluster (Kubernetes control plane with etcd)
 - variable: nodepools[0].name
   default: ""
   type: string
