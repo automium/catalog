@@ -41,11 +41,18 @@ questions:
     - 4
   label: vCPU
   group: Cluster (Kubernetes control plane with etcd)
+- variable: nodepools[0].name
+  default: ""
+  type: string
+  label: Name
+  group: Node pool 1
+  required: true
 - variable: nodepools[0].replicas
   default: 1
   type: int
   label: Number of  nodes 
   group: Node pool 1
+  required: true
 - variable: nodepools[0].ram
   default: 2
   type: enum
@@ -63,3 +70,16 @@ questions:
     - 4
   label: vCPU
   group: Node pool 1
+- variable: nodepools[0].autoscaler.enabled
+  default: false
+  description: "Autoscaler will change the number of nodes"
+  label: Enable Autoscaler
+  type: boolean
+  show_subquestion_if: true
+  group: Node pool 1
+  subquestions:
+  - variable: nodepools[0].autoscaler.max
+    default: 5
+    description: "To limit how much the pool can scale out"
+    type: int
+    label: Maximum node count
