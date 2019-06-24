@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 subjects:
 - kind: ServiceAccount
-  name: {{ include "serviceName" . }}-serviceaccount
+  name: default
 roleRef:
   kind: Role
   name: {{ include "serviceName" . }}-role

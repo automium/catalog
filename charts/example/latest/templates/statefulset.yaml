@@ -21,7 +21,6 @@ spec:
       - name: {{ include "serviceName" . }}
         image: automium/reactor
         imagePullPolicy: "Always"
-        serviceAccountName: {{ include "serviceName" . }}-serviceaccount
         lifecycle:
           preStop:
             exec:
