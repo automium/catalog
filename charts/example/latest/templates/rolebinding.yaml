@@ -1,0 +1,15 @@
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: {{ include "serviceName" . }}-rolebinding
+  labels:
+    helm.sh/chart: {{ include "example.chart" . }}
+    app.kubernetes.io/part-of: {{ include "example.fullname" . }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+subjects:
+- kind: ServiceAccount
+  name: {{ include "serviceName" . }}-serviceaccount
+roleRef:
+  kind: Role
+  name: {{ include "serviceName" . }}-role
+  apiGroup: rbac.authorization.k8s.io

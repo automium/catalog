@@ -1,0 +1,23 @@
+questions:
+- variable: nameOverride
+  default: "example"
+  type: string
+  label: Service Name
+  required: true
+  group: Main Settings
+- variable: version
+  default: "latest"
+  description: "Supported versions are acl, basic and latest"
+  type: enum
+  options:
+    - "acl"
+    - "basic"
+    - "latest"
+  label: Application Version
+  group: Main Settings
+- variable: replicas
+  default: 1
+  type: int
+  label: Number of nodes 
+  group: Main Settings
+  required: true

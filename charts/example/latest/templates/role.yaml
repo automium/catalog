@@ -1,0 +1,12 @@
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: {{ include "serviceName" . }}-role
+  labels:
+    helm.sh/chart: {{ include "example.chart" . }}
+    app.kubernetes.io/part-of: {{ include "example.fullname" . }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+rules:
+- apiGroups: ["", "apps"]
+  resources: ["pods", "statefulsets", "statefulsets/scale"]
+  verbs: ["get", "watch", "list", "create", "update", "patch", "delete"]

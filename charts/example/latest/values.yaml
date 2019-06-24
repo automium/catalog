@@ -1,0 +1,7 @@
+# nameOverride: ""
+provider: local
+
+# supported application versions: acl, basic and latest
+version: latest
+
+replicas: 1

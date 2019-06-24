@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "serviceName" . }}
+  labels:
+    helm.sh/chart: {{ include "example.chart" . }}
+    app.kubernetes.io/part-of: {{ include "example.fullname" . }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.replicas }}
+  serviceName: {{ include "serviceName" . }}
+  selector:
+    matchLabels:
+      app: {{ include "serviceName" . }}-app
+  template:
+    metadata:
+      labels:
+        app: {{ include "serviceName" . }}-app
+    spec:
+      containers:
+      - name: {{ include "serviceName" . }}
+        image: automium/reactor:{{ .Values.version }}
+        imagePullPolicy: "Always"
+        serviceAccountName: {{ include "serviceName" . }}-serviceaccount
+        lifecycle:
+          preStop:
+            exec:
+              # gracefully terminate the agent
+              command: ["consul", "leave"]
