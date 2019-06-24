@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/part-of: {{ include "example.fullname" . }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
-  replicas: {{ .Values.replicas }}
+  replicas: 0
   serviceName: {{ include "serviceName" . }}
   selector:
     matchLabels:
@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: {{ include "serviceName" . }}
-        image: automium/reactor:{{ .Values.version }}
+        image: automium/reactor
         imagePullPolicy: "Always"
         serviceAccountName: {{ include "serviceName" . }}-serviceaccount
         lifecycle:

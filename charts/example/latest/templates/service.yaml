@@ -1,0 +1,17 @@
+apiVersion: core.automium.io/v1beta1
+kind: Service
+metadata:
+  labels:
+    app: example
+    helm.sh/chart: {{ include "example.chart" . }}
+    app.kubernetes.io/component: {{ include "example.name" . }}
+    app.kubernetes.io/part-of: {{ include "example.fullname" . }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+  name: {{ include "serviceName" . }}
+spec:
+  env: []
+  extra: []
+  tags: []
+  replicas: {{ .Values.replicas }}
+  version: {{ .Values.version }}
+  flavor: default
