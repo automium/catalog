@@ -21,6 +21,9 @@ spec:
       - name: {{ include "serviceName" . }}
         image: automium/reactor
         imagePullPolicy: "Always"
+        envFrom:
+          - configMapRef:
+             name: provisioner-config
         lifecycle:
           preStop:
             exec:
