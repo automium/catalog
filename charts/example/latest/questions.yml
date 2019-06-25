@@ -7,13 +7,14 @@ questions:
   group: Main Settings
 - variable: version
   default: "latest"
-  description: "Supported versions are acl, basic, encrypt and latest"
+  description: "Use acl or encrypt versions if are enabled in Consul"
   type: enum
   options:
     - "acl"
     - "basic"
     - "latest"
     - "encrypt"
+    - "encrypt-basic"
   label: Application Version
   group: Main Settings
 - variable: replicas
