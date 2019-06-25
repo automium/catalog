@@ -21,9 +21,6 @@ spec:
       - name: {{ include "serviceName" . }}
         image: automium/reactor
         imagePullPolicy: "Always"
-        env:
-        - name: CONSUL_API
-          value: "consul.service.automium.consul"
         lifecycle:
           preStop:
             exec:

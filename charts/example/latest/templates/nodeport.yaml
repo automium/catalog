@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    helm.sh/chart: {{ include "example.chart" . }}
+    app.kubernetes.io/part-of: {{ include "example.fullname" . }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+  name: {{ include "serviceName" . }}-service
+spec:
+  ports:
+  - name: http
+    nodePort: {{ .Values.balancer.port }}
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: {{ include "serviceName" . }}-balancer
+  type: NodePort

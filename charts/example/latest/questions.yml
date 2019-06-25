@@ -7,12 +7,13 @@ questions:
   group: Main Settings
 - variable: version
   default: "latest"
-  description: "Supported versions are acl, basic and latest"
+  description: "Supported versions are acl, basic, encrypt and latest"
   type: enum
   options:
     - "acl"
     - "basic"
     - "latest"
+    - "encrypt"
   label: Application Version
   group: Main Settings
 - variable: replicas
@@ -20,4 +21,29 @@ questions:
   type: int
   label: Number of nodes 
   group: Main Settings
+  required: true
+- variable: balancer.port
+  default: 30500
+  type: int
+  label: NodePort
+  group: Balancer Settings
+  min: 30000
+  max: 32767
+- variable: balancer.dns
+  default: "consul.service.automium.consul"
+  type: string
+  label: Consul DNS Endpoint
+  group: Balancer Settings
+  required: true
+- variable: balancer.username
+  default: "admin"
+  type: string
+  label: Stats Username
+  group: Balancer Settings
+  required: 
+- variable: balancer.password
+  default: "admin"
+  type: string
+  label: Stats Password
+  group: Balancer Settings
   required: true

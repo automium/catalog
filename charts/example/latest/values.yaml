@@ -5,3 +5,10 @@ provider: local
 version: latest
 
 replicas: 1
+
+# balancer configuration: nodePort, consul dns FQDN and stats credentials
+balancer:
+  port: 30500
+  dns: consul-consul-dns.default.svc.cluster.local
+  username: admin
+  password: admin
