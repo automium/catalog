@@ -7,11 +7,10 @@ questions:
   group: Main Settings
 - variable: version
   default: "1.13.5"
-  description: "Supported versions are 1.13.5, 1.14.1 and 1.14.3"
+  description: "Supported versions are 1.13.5 and 1.14.3"
   type: enum
   options:
     - "1.13.5"
-    - "1.14.1"
     - "1.14.3"
   label: Kubernetes Version
   group: Main Settings
