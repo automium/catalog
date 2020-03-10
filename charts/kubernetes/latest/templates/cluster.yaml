@@ -9,7 +9,15 @@ metadata:
     app.kubernetes.io/managed-by: {{ .Release.Service }}
   name: {{ include "serviceName" . }}
 spec:
-  env: []
+  env:
+  - name: kubeadm_custom
+    value: |-
+      kubeletExtraArgs:
+        system-reserved: cpu=500m,memory=500Mi,ephemeral-storage=1Gi
+        kube-reserved: cpu=500m,memory=500Mi,ephemeral-storage=1Gi
+      apiServer:
+        extraArgs:
+          enable-admission-plugins: ServiceAccount,PodSecurityPolicy,PodNodeSelector
   extra: []
   replicas: {{ .Values.cluster.replicas }}
   {{- if eq .Values.provider "entercloudsuite" }}

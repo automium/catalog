@@ -14,6 +14,11 @@ spec:
   env:
   - name: cluster_name
     value: {{ include "serviceName" $dot }}
+  - name: kubeadm_custom
+    value: |-
+      kubeletExtraArgs:
+        system-reserved: cpu=500m,memory=500Mi,ephemeral-storage=1Gi
+        kube-reserved: cpu=500m,memory=500Mi,ephemeral-storage=1Gi
   {{- if .autoscaler.enabled }}
   - name: autoscaling
     value: "true"
