@@ -26,4 +26,4 @@ spec:
   flavor: "not implemented"
   {{- end }}
   tags: []
-  version: {{ .Values.cluster.versionOverride | default (include "serviceVersion" .Values.version) }}
+  version: v{{ .Values.cluster.versionOverride | default (include "serviceVersion" .Values.version) }}

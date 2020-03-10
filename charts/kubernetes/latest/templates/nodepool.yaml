@@ -35,6 +35,6 @@ spec:
   {{- end }}
   replicas: {{ .replicas }}
   tags: []
-  version: {{ include "serviceVersion" $dot.Values.version }}
+  version: v{{ include "serviceVersion" $dot.Values.version }}
 ---
 {{- end }}
