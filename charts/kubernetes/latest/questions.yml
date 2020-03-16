@@ -19,6 +19,7 @@ questions:
   description: "For a production environment you must set 3 replicas"
   type: enum
   options:
+    - 0
     - 1
     - 3
   label: Number of  nodes
