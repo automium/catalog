@@ -8,14 +8,17 @@ version: 1.14.3
 cluster:
   replicas: 3
   vcpu: 2
-  ram: 4  
+  ram: 4
   versionOverride: 1.14.3-220
+  monitoring:
+    enabled: true
+    version: 1.0.0
 
 nodepools:
   - name: pool1
     replicas: 1
     vcpu: 2
-    ram: 2  
+    ram: 2
     autoscaler:
       enabled: true
       max: 5

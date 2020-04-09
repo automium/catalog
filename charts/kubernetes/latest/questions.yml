@@ -47,6 +47,16 @@ questions:
   label: Version
   description: "Set a specific version just for upgrading the cluster"
   group: Cluster (Kubernetes control plane with etcd)
+- variable: cluster.monitoring.enabled
+  default: true
+  type: boolean
+  label: Enable Monitoring
+  group: Cluster Monitoring
+- variable: cluster.monitoring.version
+  default: "1.0.0"
+  type: string
+  label: Version
+  group: Cluster Monitoring
 - variable: nodepools[0].name
   default: ""
   type: string

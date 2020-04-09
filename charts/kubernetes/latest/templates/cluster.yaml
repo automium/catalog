@@ -18,7 +18,13 @@ spec:
       apiServer:
         extraArgs:
           enable-admission-plugins: ServiceAccount,PodSecurityPolicy,PodNodeSelector
+  {{- if eq .Values.cluster.monitoring.enabled false }}
   extra: []
+  {{- else }}
+  extra:
+  - name: monitoring
+    version: {{ .Values.cluster.monitoring.version }}
+  {{- end }}
   replicas: {{ .Values.cluster.replicas }}
   {{- if eq .Values.provider "entercloudsuite" }}
   flavor: {{ include "ecsFlavor" .Values.cluster }}
